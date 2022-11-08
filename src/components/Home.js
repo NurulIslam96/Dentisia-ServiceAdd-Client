@@ -2,17 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import banner from "../assets/Banner.jpg";
+import bannerfront from '../assets/banner-dentist.png'
 
 const Home = () => {
   const services = useLoaderData();
   return (
     <div>
       <div
-        className="w-full  bg-center md:h-[47rem] h-[32rem]"
+        className="w-full flex justify-end bg-center md:h-[47rem] h-[32rem]"
         style={{ backgroundImage: `url(${banner})` }}
       >
+        <img src={bannerfront}  className="w-96 place-self-end absolute " alt="" />
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
-          <div className="text-center">
+          <div className="text-center z-50">
             <h1 className="text-2xl font-semibold text-white uppercase lg:text-5xl">
               Examine your{" "}
               <span className="text-blue-400 underline">Teeth</span>
@@ -24,9 +26,9 @@ const Home = () => {
         </div>
       </div>
       <div className="text-center flex justify-center mt-10 text-2xl font-bold">
-        <p className="bg-slate-100 border-b-2 cursor-default border-blue-700 text-blue-700 text-center py-2 px-4 rounded">
+        <h1 className="bg-slate-100 border-b-2 cursor-default border-blue-700 text-blue-700 text-center py-2 px-4 rounded">
           Check Services
-        </p>
+        </h1>
       </div>
       <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto my-10">
         {services?.map((service) => (
@@ -39,13 +41,13 @@ const Home = () => {
                 <h1 className="text-3xl font-bold text-gray-800 uppercase dark:text-white">
                   {service.name}
                 </h1>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                <h1 className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   {service.description.length > 100 ? (
                     <p>{service.description.slice(0, 100) + "..."}</p>
                   ) : (
                     service.description
                   )}
-                </p>
+                </h1>
               </div>
               <img
                 className="object-cover bg-white w-full h-48 mt-2"
