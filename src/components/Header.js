@@ -57,12 +57,12 @@ const Header = () => {
             <li>
               <NavLink
                 style={activeLink}
-                to="/faq"
-                aria-label="faq"
+                to="/addservice"
+                aria-label="Add Service"
                 title="frequently asked questions"
                 className="font-medium transition-colors duration-300 hover:text-blue-600"
               >
-                FAQ
+                Add Service
               </NavLink>
             </li>
             <li>
@@ -250,12 +250,12 @@ const Header = () => {
                       </li>
                       <li>
                         <NavLink
-                          to="/faq"
-                          aria-label="faq"
-                          title="faq"
+                          to="/addservice"
+                          aria-label="Add Service"
+                          title="Add Service"
                           className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"
                         >
-                          <p>FAQ</p>
+                          <p>Add Service</p>
                         </NavLink>
                       </li>
                       <li>

@@ -9,7 +9,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate()
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location?.state?.from?.pathname || "/";
 
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -35,7 +35,6 @@ const Login = () => {
       })
       .catch((e) => setError(e.message));
     }
-
 
   return (
     <div className="flex items-center min-h-screen">

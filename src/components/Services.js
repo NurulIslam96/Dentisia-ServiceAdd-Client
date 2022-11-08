@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { useLoaderData } from "react-router-dom";
 
 const Services = () => {
-  const services = useLoaderData();
+  const [ services , setServices] = useState()
+
+  useEffect(()=>{
+    fetch('http://localhost:5000/services')
+    .then(res => res.json())
+    .then(data => {
+      setServices(data)
+    })
+  },[])
 
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto gap-4 my-10">
-      {services.map((service) => (
+      {services?.map((service) => (
         <div key={service._id} className="flex justify-center">
           <div className="rounded-lg shadow-lg bg-white max-w-sm">
             <PhotoProvider>
               <PhotoView key={service.thumbnail} src={service.thumbnail}>
-              <img src={service.thumbnail} alt="" />
+              <img src={service.thumbnail} className="w-full md:h-64" alt="" />
               </PhotoView>
             </PhotoProvider>
             <div className="p-6">
@@ -21,9 +28,9 @@ const Services = () => {
               </h5>
               <p className="text-gray-700 text-base mb-4">
                 {service.description.length > 100 ? (
-                  <p>{service.description.slice(0, 100) + "..."}</p>
+                  <p>{service?.description?.slice(0, 100) + "..."}</p>
                 ) : (
-                  service.description
+                  service?.description
                 )}
               </p>
               <button
