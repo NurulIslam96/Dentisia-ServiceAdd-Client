@@ -1,20 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import { FaRegEdit } from "react-icons/fa";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
+  const [refresh , setRefresh] = useState(false)
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyReviews(data));
-  }, [user]);
+  }, [user, refresh]);
 
-  const handleDeleteReview = id => {
-    console.log(id)
+  const handleDeleteReview = (id, name) => {
+    fetch(`http://localhost:5000/myreviews/${id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount > 0){
+            toast.success(`Deleted Review from ${name}`)
+            setRefresh(!refresh)
+        }
+    })
   }
 
   return (
@@ -56,7 +67,7 @@ const MyReviews = () => {
                         <button
                           type="button"
                           className="flex items-center px-2 py-1 pl-0 space-x-1"
-                          onClick={()=>handleDeleteReview(review._id)}
+                          onClick={()=>handleDeleteReview(review._id, review.name)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
