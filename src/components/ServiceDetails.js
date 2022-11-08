@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import reviewBanner from "../assets/review-banner.png";
 import { AuthContext } from "../contexts/AuthProvider";
 
@@ -49,6 +50,7 @@ const ServiceDetails = () => {
 
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
+        <Helmet><title>Service Details</title></Helmet>
       <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
@@ -79,7 +81,9 @@ const ServiceDetails = () => {
         {/* Add Review Section */}
         <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
           <div className="lg:col-start-2">
-            <div className="flex flex-col max-w-lg p-8 shadow-sm rounded-xl mx-auto mb-5 lg:p-12 bg-gray-800 text-gray-100">
+            {
+                user?.email ? <>
+                <div className="flex flex-col max-w-lg p-8 shadow-sm rounded-xl mx-auto mb-5 lg:p-12 bg-gray-800 text-gray-100">
               <div className="flex flex-col items-center w-full">
                 <h2 className="text-3xl font-semibold text-center">
                   Your opinion matters!
@@ -179,10 +183,32 @@ const ServiceDetails = () => {
                 </form>
               </div>
             </div>
+                </> : <>
+                <div className="flex flex-col max-w-lg p-8 shadow-sm rounded-xl mx-auto mb-5 lg:p-12 bg-gray-800 text-gray-100">
+              <div className="flex flex-col items-center w-full">
+                <h2 className="text-3xl font-semibold text-center">
+                  Your opinion matters!
+                </h2>
+                <div className="flex flex-col items-center py-6 space-y-3">
+                  <span className="text-center">Please Login to Add a Review</span>
+                </div>
+                <form
+                  onSubmit={handleSubmitReview}
+                  className="flex flex-col w-full"
+                >
+                  <Link
+                    className="py-4 my-8 font-semibold rounded-md cursor-pointer dark:text-gray-900 text-center bg-violet-400"
+                    to={'/login'}
+                  >Please Login</Link>
+                </form>
+              </div>
+            </div>
+                </>
+            }
             {/* Previous Review Section Start */}
             {reviews?.map((review) => (
               <div key={review._id} review={review}>
-              <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-800 text-gray-100">
+              <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-800 text-gray-100 mb-5">
                 <div className="flex justify-between p-4">
                   <div className="flex space-x-4">
                     <div>
@@ -195,7 +221,7 @@ const ServiceDetails = () => {
                     <div>
                       <h4 className="font-bold">{review.username}</h4>
                       <span className="text-xs text-gray-400">
-                        2 days ago
+                        {review.timestamp}
                       </span>
                     </div>
                   </div>

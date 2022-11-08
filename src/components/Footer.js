@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
           <div className="space-y-3">
             <h3 className="tracking-wide uppercase dark:text-gray-50">
-              Company
+              Dentisia
             </h3>
             <ul className="space-y-1">
               <li>
@@ -61,7 +61,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="uppercase dark:text-gray-50">Developers</h3>
+            <h3 className="uppercase dark:text-gray-50">Service Area</h3>
             <ul className="space-y-1">
               <li>
                 <Link rel="noopener noreferrer" href="#">

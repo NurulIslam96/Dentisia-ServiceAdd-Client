@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import banner from "../assets/Banner.jpg";
 import bannerfront from '../assets/banner-dentist.png'
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const services = useLoaderData();
   return (
     <div>
+      <Helmet><title>Dentisia</title></Helmet>
       <div
         className="w-full flex justify-end bg-center md:h-[47rem] h-[32rem]"
         style={{ backgroundImage: `url(${banner})` }}

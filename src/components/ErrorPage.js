@@ -1,9 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
         <div className="bg-gray-800 h-screen">
+            <Helmet><title>Error- Go Back</title></Helmet>
             <div className="flex items-center justify-center  py-12">
                 <div className="bg-white border rounded-md flex items-center justify-center mx-4 md:w-2/3 ">
                     <div className="flex flex-col items-center py-16 ">

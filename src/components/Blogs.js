@@ -1,12 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const MyReviews = () => {
+const Blogs = () => {
     return (
         <div>
-            <Helmet><title>My Reviews</title></Helmet>
+           <Helmet><title>Blogs</title></Helmet> 
         </div>
     );
 };
 
-export default MyReviews;
+export default Blogs;

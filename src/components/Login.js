@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import dentist from '../assets/dentist.jpg'
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { googleSignIn,signIn} = useContext(AuthContext)
@@ -16,6 +17,7 @@ const Login = () => {
         .then(result => {
             const user = result.user
             console.log(user)
+            navigate(from, { replace: true });
         })
         .catch(err => console.log(err))
     }
@@ -38,6 +40,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center min-h-screen">
+      <Helmet><title>Login</title></Helmet>
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-slate-800 rounded-lg shadow-lg lg:max-w-4xl">
       <div
         className="hidden bg-cover lg:block lg:w-1/2"

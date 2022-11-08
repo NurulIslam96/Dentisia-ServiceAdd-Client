@@ -53,12 +53,12 @@ const Header = () => {
             <li>
               <NavLink
                 style={activeLink}
-                to="/blog"
-                aria-label="blog"
-                title="blog"
+                to="/blogs"
+                aria-label="blogs"
+                title="blogs"
                 className="font-medium transition-colors duration-300 hover:text-blue-600"
               >
-                Blog
+                Blogs
               </NavLink>
             </li>
             {user?.uid ? (
@@ -256,12 +256,12 @@ const Header = () => {
                       </li>
                       <li>
                         <NavLink
-                          to="/blog"
-                          aria-label="blog"
-                          title="blog"
+                          to="/blogs"
+                          aria-label="blogs"
+                          title="blogs"
                           className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"
                         >
-                          Blog
+                          Blogs
                         </NavLink>
                       </li>
                       {user?.uid ? (

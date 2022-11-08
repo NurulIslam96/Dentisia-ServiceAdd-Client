@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import dentist from "../assets/dentist2.png";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
@@ -53,6 +54,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet><title>Sign Up</title></Helmet>
       <div className="flex my-5 w-full max-w-sm mx-auto overflow-hidden bg-slate-800 rounded-lg shadow-lg lg:max-w-4xl">
         <div
           className="hidden bg-cover lg:block lg:w-1/2"
