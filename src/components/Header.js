@@ -8,6 +8,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [openBar, setOpenBar] = React.useState(false);
   const [profileBar, setProfileBar] = React.useState(false);
+  console.log(user)
 
   const activeLink = ({ isActive }) => {
     return {
@@ -133,7 +134,7 @@ const Header = () => {
             )}
           </ul>
           {profileBar && (
-            <div className="absolute top-11 mx-0 right-0 w-1/6 lg:block hidden">
+            <div className="absolute top-11 z-50 mx-0 right-0 w-1/6 lg:block hidden">
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
