@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import banner from "../assets/Banner.jpg";
 
 const Home = () => {
+  const services = useLoaderData();
   return (
     <div>
       <div
@@ -20,32 +23,57 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 container mx-auto">
-        <div>
-          <div class="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-            <div class="px-4 py-2">
-              <h1 class="text-3xl font-bold text-gray-800 uppercase dark:text-white">
-                NIKE AIR
-              </h1>
-              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-                quos quidem sequi illum facere recusandae voluptatibus
-              </p>
-            </div>
-            <img
-              class="object-cover w-full h-48 mt-2"
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
-              alt="NIKE AIR"
-            />
+      <div className="text-center flex justify-center mt-10 text-2xl font-bold">
+        <p className="bg-slate-100 border-b-2 cursor-default border-blue-700 text-blue-700 text-center py-2 px-4 rounded">
+          Check Services
+        </p>
+      </div>
+      <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto my-10">
+        {services?.map((service) => (
+          <div
+            key={service._id}
+            className="flex items-center justify-center mx-2"
+          >
+            <div className="md:max-w-xs overflow-hidden bg-white rounded-lg shadow-lg my-5 dark:bg-gray-800">
+              <div className="px-4 py-2">
+                <h1 className="text-3xl font-bold text-gray-800 uppercase dark:text-white">
+                  {service.name}
+                </h1>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                  {service.description.length > 100 ? (
+                    <p>{service.description.slice(0, 100) + "..."}</p>
+                  ) : (
+                    service.description
+                  )}
+                </p>
+              </div>
+              <img
+                className="object-cover bg-white w-full h-48 mt-2"
+                src={service.thumbnail}
+                alt="serviceImage"
+              />
 
-            <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
-              <h1 class="text-lg font-bold text-white">$129</h1>
-              <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-                Add to cart
-              </button>
+              <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
+                <h1 className="text-lg font-bold text-white">
+                  ${service.price}
+                </h1>
+                <Link
+                  className="px-2 py-2 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-400 focus:bg-gray-400 focus:outline-none"
+                  to={"/services"}
+                >
+                  View Details
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
+      <div className="text-center mb-10">
+        <Link className="border-2 border-gray-800 rounded-lg px-3 py-2 text-gray-800 text-lg cursor-pointer hover:bg-gray-800 hover:text-gray-200"
+        to={'/services'}
+        >
+          View All
+        </Link>
       </div>
     </div>
   );
