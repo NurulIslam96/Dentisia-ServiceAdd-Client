@@ -37,6 +37,7 @@ const ServiceDetails = () => {
         username,
         photoURL,
         message,
+        name
       }),
     })
       .then((res) => res.json())

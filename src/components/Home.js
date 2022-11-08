@@ -14,9 +14,9 @@ const Home = () => {
         className="w-full flex justify-end bg-center md:h-[47rem] h-[32rem]"
         style={{ backgroundImage: `url(${banner})` }}
       >
-        <img src={bannerfront}  className="w-96 place-self-end absolute " alt="" />
+        <img src={bannerfront}  className="md:w-96 w-80 place-self-end absolute " alt="" />
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
-          <div className="text-center z-50">
+          <div className="text-center z-20">
             <h1 className="text-2xl font-semibold text-white uppercase lg:text-5xl">
               Examine your{" "}
               <span className="text-blue-400 underline">Teeth</span>

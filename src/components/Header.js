@@ -68,10 +68,21 @@ const Header = () => {
                 style={activeLink}
                 to="/addservice"
                 aria-label="Add Service"
-                title="frequently asked questions"
+                title="Add Service"
                 className="font-medium transition-colors duration-300 hover:text-blue-600"
               >
                 Add Service
+              </NavLink>
+            </li>
+              <li>
+              <NavLink
+                style={activeLink}
+                to="/myreviews"
+                aria-label="myreviews"
+                title="myreviews"
+                className="font-medium transition-colors duration-300 hover:text-blue-600"
+              >
+                My Reviews
               </NavLink>
             </li>
               <span className="font-semibold">{user?.displayName}</span>
@@ -206,7 +217,7 @@ const Header = () => {
               </svg>
             </button>
             {openBar && (
-              <div className="absolute top-0 left-0 w-full">
+              <div className="absolute top-0 left-0 w-full z-50">
                 <div className="p-5 bg-white border rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>
@@ -276,7 +287,18 @@ const Header = () => {
                           </NavLink>
                         </li>
                       ) : (
-                        <></>
+                        <>
+                        <li>
+                          <NavLink
+                            aria-label="login"
+                            title="login"
+                            className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"
+                            to={'/login'}
+                          >
+                            Log In
+                          </NavLink>
+                        </li>
+                        </>
                       )}
                     </ul>
                   </nav>

@@ -55,7 +55,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen">
       <Helmet><title>Sign Up</title></Helmet>
-      <div className="flex my-5 w-full max-w-sm mx-auto overflow-hidden bg-slate-800 rounded-lg shadow-lg lg:max-w-4xl">
+      <div className="flex my-10 w-full max-w-sm mx-auto overflow-hidden bg-slate-800 rounded-lg shadow-lg lg:max-w-4xl">
         <div
           className="hidden bg-cover lg:block lg:w-1/2"
           style={{
