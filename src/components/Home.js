@@ -61,7 +61,7 @@ const Home = () => {
                 </h1>
                 <Link
                   className="px-2 py-2 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-400 focus:bg-gray-400 focus:outline-none"
-                  to={"/services"}
+                  to={`/services/${service._id}`}
                 >
                   View Details
                 </Link>

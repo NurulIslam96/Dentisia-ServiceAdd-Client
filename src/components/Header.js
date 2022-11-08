@@ -2,20 +2,20 @@ import React, { useContext } from "react";
 import { FaChevronCircleDown, FaUser } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
-import sitelogo from '../assets/Logo.webp'
+import sitelogo from "../assets/Logo.webp";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [openBar, setOpenBar] = React.useState(false);
   const [profileBar, setProfileBar] = React.useState(false);
-  console.log(user)
+  console.log(user);
 
   const activeLink = ({ isActive }) => {
     return {
-      boxShadow: isActive ? "inset 0 2px #1865f2" : ""
+      boxShadow: isActive ? "inset 0 2px #1865f2" : "",
     };
   };
-  
+
   const handleSignOut = () => {
     logOut();
     setProfileBar(false);
@@ -31,11 +31,7 @@ const Header = () => {
             title="Dentisia"
             className="inline-flex items-center"
           >
-            <img
-              src={sitelogo}
-              alt="siteLogo"
-              width={"40px"}
-            />
+            <img src={sitelogo} alt="siteLogo" width={"40px"} />
             <div className="flex flex-col ml-2  transition-colors duration-200">
               <span className="text-2xl font-bold tracking-wide uppercase">
                 Dent<span className="text-blue-300">isia</span>
@@ -57,17 +53,6 @@ const Header = () => {
             <li>
               <NavLink
                 style={activeLink}
-                to="/addservice"
-                aria-label="Add Service"
-                title="frequently asked questions"
-                className="font-medium transition-colors duration-300 hover:text-blue-600"
-              >
-                Add Service
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={activeLink}
                 to="/blog"
                 aria-label="blog"
                 title="blog"
@@ -77,9 +62,20 @@ const Header = () => {
               </NavLink>
             </li>
             {user?.uid ? (
-              <span className="font-semibold">
-                {user?.displayName}
-              </span>
+              <>
+              <li>
+              <NavLink
+                style={activeLink}
+                to="/addservice"
+                aria-label="Add Service"
+                title="frequently asked questions"
+                className="font-medium transition-colors duration-300 hover:text-blue-600"
+              >
+                Add Service
+              </NavLink>
+            </li>
+              <span className="font-semibold">{user?.displayName}</span>
+              </>
             ) : (
               <>
                 <li>
