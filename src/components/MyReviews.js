@@ -6,8 +6,10 @@ import { AuthContext } from "../contexts/AuthProvider";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
-  const [refresh , setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const { user } = useContext(AuthContext);
+  console.log(myReviews.length)
 
   useEffect(() => {
     fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
@@ -17,26 +19,54 @@ const MyReviews = () => {
 
   const handleDeleteReview = (id, name) => {
     fetch(`http://localhost:5000/myreviews/${id}`, {
-        method: "DELETE"
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount > 0){
-            toast.success(`Deleted Review from ${name}`)
-            setRefresh(!refresh)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success(`Deleted Review from ${name}`);
+          setRefresh(!refresh);
         }
+      });
+  };
+  const handleEditReview = (e, id) => {
+    e.preventDefault();
+    const form = e.target;
+    const message = form.message.value;
+    fetch(`http://localhost:5000/editreview/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        message: message,
+      }),
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.matchedCount > 0) {
+          toast.success("Successfully edited your Review");
+          setRefresh(!refresh);
+          form.reset();
+        } else {
+          toast.error("Update Failed");
+        }
+      });
+  };
+
+  const handleHidden = () => {
+    setHidden(!hidden);
+  };
 
   return (
-    <div className="">
+    <div>
       <Helmet>
         <title>My Reviews</title>
       </Helmet>
       <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-800 container mx-auto my-5 rounded-md text-gray-100">
         <h2 className="text-xl font-semibold">My Reviews</h2>
         {/* My Reviews Section */}
-        {myReviews ? (
+        {myReviews?.length > 0 ? (
           <div>
             {myReviews?.map((review) => (
               <ul
@@ -57,17 +87,40 @@ const MyReviews = () => {
                           <h3 className="text-lg font-semibold leading-snug sm:pr-8">
                             {review.name}
                           </h3>
-                          <p className="text-sm dark:text-gray-400">{review.message}</p>
+                          <p className="text-sm dark:text-gray-400">
+                            {review.message}
+                          </p>
+                          <form
+                            onSubmit={(e) => handleEditReview(e, review._id)}
+                            className="flex md:flex-row flex-col"
+                          >
+                            <textarea
+                              className="w-full text-black md:rounded-l-md p-4"
+                              placeholder="Edit Review"
+                              name="message"
+                              rows="1"
+                              required
+                            ></textarea>
+                            <input
+                              type="submit"
+                              value={"Submit"}
+                              className="px-2 py-3 md:rounded-r-md bg-blue-500"
+                            />
+                          </form>
                         </div>
                         <div className="text-right">
-                          <p className="text-lg font-semibold">{review.timestamp.slice(0,10)}</p>
+                          <p className="text-lg font-semibold">
+                            {review.timestamp.slice(0, 10)}
+                          </p>
                         </div>
                       </div>
                       <div className="flex text-sm divide-x">
                         <button
                           type="button"
                           className="flex items-center px-2 py-1 pl-0 space-x-1"
-                          onClick={()=>handleDeleteReview(review._id, review.name)}
+                          onClick={() =>
+                            handleDeleteReview(review._id, review.name)
+                          }
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +155,7 @@ const MyReviews = () => {
                           className="flex items-center px-2 py-1 space-x-1"
                         >
                           <FaRegEdit></FaRegEdit>
-                          <span>Edit</span>
+                          <span onClick={handleHidden}>Edit</span>
                         </button>
                       </div>
                     </div>
@@ -112,7 +165,9 @@ const MyReviews = () => {
             ))}
           </div>
         ) : (
-          <></>
+          <div>
+            <h2 className="text-5xl text-white">No Reviews Yet</h2>
+          </div>
         )}
       </div>
     </div>

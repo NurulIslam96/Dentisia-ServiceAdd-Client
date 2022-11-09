@@ -39,6 +39,7 @@ const Login = () => {
     }
 
   return (
+    // Spinner Added in Private Route
     <div className="flex items-center min-h-screen">
       <Helmet><title>Login</title></Helmet>
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-slate-800 rounded-lg shadow-lg lg:max-w-4xl">

@@ -31,6 +31,7 @@ const AddService = () => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Service Added Succesfully");
+          form.reset()
         }
         toast.error("Failed To Add Service");
       });

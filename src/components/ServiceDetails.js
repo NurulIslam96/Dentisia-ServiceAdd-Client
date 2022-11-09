@@ -4,10 +4,12 @@ import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import reviewBanner from "../assets/review-banner.png";
 import { AuthContext } from "../contexts/AuthProvider";
+import Spinner from "./Spinner";
 
 const ServiceDetails = () => {
   const [reviews, setReviews] = useState();
   const [refresh, setRefresh] = useState(false);
+  const [spin, setSpin] = useState(true)
   const service = useLoaderData();
   const { user } = useContext(AuthContext);
   const { _id, name, price, description, thumbnail } = service;
@@ -16,6 +18,7 @@ const ServiceDetails = () => {
     fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
+      setSpin(false)
   }, [_id, refresh]);
 
   const handleSubmitReview = (e) => {
@@ -45,12 +48,14 @@ const ServiceDetails = () => {
         if (data.acknowledged) {
           toast.success("Thanks for your Review");
           setRefresh(!refresh);
+          form.reset();
         }
       });
   };
 
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
+        {spin && <Spinner></Spinner>}
         <Helmet><title>Service Details</title></Helmet>
       <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
         <div>

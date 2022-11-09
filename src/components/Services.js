@@ -2,20 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const Services = () => {
   const [services, setServices] = useState();
+  const [spin, setSpin] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
+        setSpin(false)
       });
   }, []);
 
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto gap-4 my-10">
+      {spin && <div className="grid col-span-3"><Spinner></Spinner></div>}
       <Helmet>
         <title>Services</title>
       </Helmet>
