@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAT9zeao4i8Ac2z3Ud7DdgbbvzXYAvhHtk",
-  authDomain: "dentisia-client-side.firebaseapp.com",
-  projectId: "dentisia-client-side",
-  storageBucket: "dentisia-client-side.appspot.com",
-  messagingSenderId: "561630055650",
-  appId: "1:561630055650:web:e1ea096a2daaffbec7a2bb"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
