@@ -8,14 +8,22 @@ const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const { user } = useContext(AuthContext);
-  console.log(myReviews.length)
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyReviews(data));
-  }, [user, refresh]);
+    fetch(`http://localhost:5000/myreviews?email=${user?.email}`,{
+      headers: {
+        authorization:`Bearer ${localStorage.getItem('dent-token')}`
+      }
+    })
+      .then((res) => {
+        if(res.status === 401 || res.status === 403){
+          return logOut();
+        }
+        return res.json();
+      })
+      .then(data => setMyReviews(data));
+  }, [user, refresh, logOut]);
 
   const handleDeleteReview = (id, name) => {
     fetch(`http://localhost:5000/myreviews/${id}`, {

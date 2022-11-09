@@ -89,7 +89,7 @@ const Home = () => {
         </Link>
       </div>
       <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
-	<div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
+	<div className="container grid grid-cols-1 gap-6 mx-auto md:mt-36 sm:grid-cols-2 xl:grid-cols-4">
 		<div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 text-gray-100">
 			<div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="h-9 w-9 dark:text-gray-800">
@@ -147,7 +147,7 @@ const Home = () => {
 	</div>
 </section>
       <div
-        className="w-full dark:bg-gray-500"
+        className="w-full mt-24 dark:bg-gray-500"
         style={{
           backgroundImage: "url('https://www.afamilydentalcarecenter.com/wp-content/uploads/2019/02/DentalOfficeBackground.png')",
           backgroundPosition: "center",

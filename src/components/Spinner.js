@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Spinner = () => {
-    return (
-        <div className="text-center">
+  return (
+    <div className="absolute">
+      <div className="text-center">
         <div role="status">
           <svg
             className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -22,7 +23,8 @@ const Spinner = () => {
           <span>Loading...</span>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Spinner;

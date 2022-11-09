@@ -6,9 +6,12 @@ import { AuthContext } from "../contexts/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
+
   if (loading) {
     return (
-      <Spinner></Spinner>
+      <div className="container mx-auto flex justify-center items-center md:h-96 h-32">
+        <Spinner></Spinner>
+      </div>
     );
   }
   if (!user) {

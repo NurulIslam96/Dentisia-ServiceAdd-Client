@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const createUser = (email, password) => {
-    setLoading(true);
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setLoading(true);
+    localStorage.removeItem('dent-token')
     return signOut(auth);
   };
 

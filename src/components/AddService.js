@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
+  const [refresh ,setRefresh] = useState(false)
+
+  useEffect(()=>{
+    setRefresh(true)
+  },[refresh])
 
   const handleAddService = (e) => {
     e.preventDefault();
@@ -23,23 +28,29 @@ const AddService = () => {
         thumbnail,
         name,
         price,
-        description
+        description,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           toast.success("Service Added Succesfully");
-          form.reset()
+          form.reset();
+        } else {
+          toast.error("Failed To Add Service");
         }
-        toast.error("Failed To Add Service");
       });
   };
 
+  const lol = () => {
+    console.log('asdasd')
+  }
+lol()
   return (
     <section className="md:my-20">
-        <Helmet><title>Add Service</title></Helmet>
+      <Helmet>
+        <title>Add Service</title>
+      </Helmet>
       <div className="px-6 h-full text-gray-800">
         <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
           <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">

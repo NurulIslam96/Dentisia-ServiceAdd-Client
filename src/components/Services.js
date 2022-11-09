@@ -13,16 +13,19 @@ const Services = () => {
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
+        console.log(data)
         setSpin(false)
       });
   }, []);
 
   return (
-    <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto gap-4 my-10">
-      {spin && <div className="grid col-span-3"><Spinner></Spinner></div>}
+    <div>
       <Helmet>
         <title>Services</title>
       </Helmet>
+      {spin ? <div className="container mx-auto flex justify-center items-center md:h-96 h-32"><Spinner></Spinner></div> : 
+      <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto gap-4 my-10">
+      
       {services?.map((service) => (
         <div key={service._id} className="flex justify-center">
           <div className="rounded-lg shadow-lg bg-white max-w-sm">
@@ -57,6 +60,9 @@ const Services = () => {
           </div>
         </div>
       ))}
+    </div>
+      }
+      
     </div>
   );
 };
