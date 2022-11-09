@@ -30,7 +30,7 @@ const Login = () => {
         const currentUser = {
           email: user.email,
         };
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://dentisia-server-side.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -60,7 +60,7 @@ const Login = () => {
         };
         form.reset();
         setError("");
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://dentisia-server-side.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

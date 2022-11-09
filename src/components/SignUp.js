@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import dentist from "../assets/dentist2.png";
 import { Helmet } from "react-helmet-async";
@@ -10,6 +10,8 @@ const SignUp = () => {
   const [spin, setSpin] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (spin) {
@@ -40,7 +42,7 @@ const SignUp = () => {
         setError("");
         form.reset();
         handleUpdateUserProfile(displayName, photoURL);
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://dentisia-server-side.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -50,10 +52,10 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("dent-token", data.token);
-            navigate("/");
+            navigate(from, { replace: true });
           });
       })
-      .catch((e) => setError(e.message));
+      .catch((err) => setError(err.message));
   };
 
   const handleUpdateUserProfile = (displayName, photoURL) => {

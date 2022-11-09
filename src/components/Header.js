@@ -8,8 +8,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [openBar, setOpenBar] = React.useState(false);
   const [profileBar, setProfileBar] = React.useState(false);
-  console.log(user);
-
+  
   const activeLink = ({ isActive }) => {
     return {
       boxShadow: isActive ? "inset 0 2px #1865f2" : "",

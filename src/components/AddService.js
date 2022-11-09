@@ -1,15 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
-  const [refresh ,setRefresh] = useState(false)
-
-  useEffect(()=>{
-    setRefresh(true)
-  },[refresh])
+  // const [refresh ,setRefresh] = useState(false)
 
   const handleAddService = (e) => {
     e.preventDefault();
@@ -18,7 +14,7 @@ const AddService = () => {
     const price = form.price.value;
     const thumbnail = form.imgUrl.value;
     const description = form.description.value;
-    fetch("http://localhost:5000/services", {
+    fetch("https://dentisia-server-side.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,10 +38,6 @@ const AddService = () => {
       });
   };
 
-  const lol = () => {
-    console.log('asdasd')
-  }
-lol()
   return (
     <section className="md:my-20">
       <Helmet>

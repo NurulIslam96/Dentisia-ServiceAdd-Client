@@ -11,7 +11,7 @@ const MyReviews = () => {
   const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreviews?email=${user?.email}`,{
+    fetch(`https://dentisia-server-side.vercel.app/myreviews?email=${user?.email}`,{
       headers: {
         authorization:`Bearer ${localStorage.getItem('dent-token')}`
       }
@@ -26,7 +26,7 @@ const MyReviews = () => {
   }, [user, refresh, logOut]);
 
   const handleDeleteReview = (id, name) => {
-    fetch(`http://localhost:5000/myreviews/${id}`, {
+    fetch(`https://dentisia-server-side.vercel.app/myreviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const MyReviews = () => {
     e.preventDefault();
     const form = e.target;
     const message = form.message.value;
-    fetch(`http://localhost:5000/editreview/${id}`, {
+    fetch(`https://dentisia-server-side.vercel.app/editreview/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

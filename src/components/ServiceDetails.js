@@ -15,7 +15,7 @@ const ServiceDetails = () => {
   const { _id, name, price, description, thumbnail } = service;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
+    fetch(`https://dentisia-server-side.vercel.app/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
       setSpin(false)
@@ -29,7 +29,7 @@ const ServiceDetails = () => {
     const photoURL = user.photoURL;
     const email = user.email;
     const serviceId = service._id;
-    fetch(`http://localhost:5000/reviews`, {
+    fetch(`https://dentisia-server-side.vercel.app/reviews`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

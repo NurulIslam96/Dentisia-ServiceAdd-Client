@@ -9,7 +9,7 @@ const Services = () => {
   const [spin, setSpin] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://dentisia-server-side.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -25,7 +25,6 @@ const Services = () => {
       </Helmet>
       {spin ? <div className="container mx-auto flex justify-center items-center md:h-96 h-32"><Spinner></Spinner></div> : 
       <div className="grid md:grid-cols-3 grid-cols-1 container mx-auto gap-4 my-10">
-      
       {services?.map((service) => (
         <div key={service._id} className="flex justify-center">
           <div className="rounded-lg shadow-lg bg-white max-w-sm">

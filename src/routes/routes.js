@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/home"),
+        loader: () => fetch("https://dentisia-server-side.vercel.app/home"),
       },
       {
         path: "/login",
@@ -29,7 +29,7 @@ export const routes = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://dentisia-server-side.vercel.app/services"),
       },
       {
         path: "/signup",
@@ -47,7 +47,7 @@ export const routes = createBrowserRouter([
         path: "/services/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://dentisia-server-side.vercel.app/services/${params.id}`),
       },
       {
         path: '/myreviews',
