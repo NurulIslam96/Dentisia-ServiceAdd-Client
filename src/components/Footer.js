@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="lg:w-1/3">
           <Link
             rel="noopener noreferrer"
-            href="#"
+            to={'/'}
             className="flex justify-center space-x-3 lg:justify-start"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
