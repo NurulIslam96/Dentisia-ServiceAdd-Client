@@ -66,7 +66,9 @@ const MyReviews = () => {
     setHidden(!hidden);
   };
 
-  console.log(myReviews);
+  const handleShow = (id) => {
+    console.log(id)
+  }
 
   return (
     <div>
@@ -159,13 +161,6 @@ const MyReviews = () => {
                             <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                           </svg>
                           <span>Delete</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="flex items-center px-2 py-1 space-x-1"
-                        >
-                          <FaRegEdit></FaRegEdit>
-                          <span onClick={handleHidden}>Edit</span>
                         </button>
                       </div>
                     </div>

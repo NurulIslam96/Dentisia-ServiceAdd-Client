@@ -8,7 +8,7 @@ const MyProfile = () => {
     <div className="container mx-auto flex items-center justify-center md:my-32 my-10">
         <div className="mx-2">
       <div className="border-b-2 block md:flex">
-        <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+        <div data-aos="fade-right" className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
           <div className="flex justify-between">
             <span className="text-xl font-semibold block">{user.displayName}</span>
             <Link
@@ -32,7 +32,7 @@ const MyProfile = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+        <div data-aos="fade-left" className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
           <div className="rounded  shadow p-6">
             <div className="pb-6">
               <label for="name" className="font-semibold text-gray-700 block pb-1">

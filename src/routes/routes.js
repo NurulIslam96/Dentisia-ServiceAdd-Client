@@ -60,8 +60,8 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/myprofile',
-        element: <MyProfile></MyProfile>
-      }
+        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+      },
     ],
   },
 ]);
