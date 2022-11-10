@@ -27,6 +27,7 @@ const ServiceDetails = () => {
     const message = form.message.value;
     const username = user.displayName;
     const photoURL = user.photoURL;
+    const serviceImg = service.thumbnail;
     const email = user.email;
     const serviceId = service._id;
     fetch(`https://dentisia-server-side.vercel.app/reviews`, {
@@ -37,6 +38,7 @@ const ServiceDetails = () => {
       body: JSON.stringify({
         serviceId,
         email,
+        serviceImg,
         username,
         photoURL,
         message,
@@ -55,9 +57,9 @@ const ServiceDetails = () => {
 
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
-        {spin && <Spinner></Spinner>}
         <Helmet><title>Service Details</title></Helmet>
-      <div data-aos="fade-left" className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+        {spin ? <Spinner className="container mx-auto flex justify-center items-center md:h-96 h-32"></Spinner> : 
+        <div data-aos="fade-left" className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
             Service Details
@@ -261,6 +263,8 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+        }
+      
     </section>
   );
 };

@@ -8,7 +8,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [openBar, setOpenBar] = React.useState(false);
   const [profileBar, setProfileBar] = React.useState(false);
-  
+
   const activeLink = ({ isActive }) => {
     return {
       boxShadow: isActive ? "inset 0 2px #1865f2" : "",
@@ -62,29 +62,29 @@ const Header = () => {
             </li>
             {user?.uid ? (
               <>
-              <li>
-              <NavLink
-                style={activeLink}
-                to="/addservice"
-                aria-label="Add Service"
-                title="Add Service"
-                className="font-medium transition-colors duration-300 hover:text-blue-600"
-              >
-                Add Service
-              </NavLink>
-            </li>
-              <li>
-              <NavLink
-                style={activeLink}
-                to="/myreviews"
-                aria-label="myreviews"
-                title="myreviews"
-                className="font-medium transition-colors duration-300 hover:text-blue-600"
-              >
-                My Reviews
-              </NavLink>
-            </li>
-              <span className="font-semibold">{user?.displayName}</span>
+                <li>
+                  <NavLink
+                    style={activeLink}
+                    to="/addservice"
+                    aria-label="Add Service"
+                    title="Add Service"
+                    className="font-medium transition-colors duration-300 hover:text-blue-600"
+                  >
+                    Add Service
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    style={activeLink}
+                    to="/myreviews"
+                    aria-label="myreviews"
+                    title="myreviews"
+                    className="font-medium transition-colors duration-300 hover:text-blue-600"
+                  >
+                    My Reviews
+                  </NavLink>
+                </li>
+                <span className="font-semibold">{user?.displayName}</span>
               </>
             ) : (
               <>
@@ -122,12 +122,9 @@ const Header = () => {
                 >
                   {user?.photoURL ? (
                     <div className="flex items-center gap-2">
-                      <img
-                        style={{ height: "35px", width: "35px" }}
-                        className="rounded-full"
-                        src={user?.photoURL}
-                        alt={""}
-                      />
+                      <div className="relative flex-shrink-0">
+                        <img alt="" className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src={user?.photoURL}/>
+                      </div>
                       <FaChevronCircleDown className="hover:text-blue-700"></FaChevronCircleDown>
                     </div>
                   ) : (
@@ -140,11 +137,17 @@ const Header = () => {
             )}
           </ul>
           {profileBar && (
-            <div className="absolute top-11 z-50 mx-0 right-0 w-1/6 lg:block hidden">
+            <div
+              data-aos="fade-down"
+              className="absolute top-11 z-50 mx-0 right-0 w-1/6 lg:block hidden"
+            >
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <NavLink to="/myprofile" className="inline-flex items-center">
+                    <NavLink
+                      to="/myprofile"
+                      className="inline-flex items-center"
+                    >
                       <span className="text-md font-bold tracking-wide text-blue-900 uppercase">
                         {user?.displayName}
                       </span>
@@ -287,16 +290,16 @@ const Header = () => {
                         </li>
                       ) : (
                         <>
-                        <li>
-                          <NavLink
-                            aria-label="login"
-                            title="login"
-                            className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"
-                            to={'/login'}
-                          >
-                            Log In
-                          </NavLink>
-                        </li>
+                          <li>
+                            <NavLink
+                              aria-label="login"
+                              title="login"
+                              className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"
+                              to={"/login"}
+                            >
+                              Log In
+                            </NavLink>
+                          </li>
                         </>
                       )}
                     </ul>

@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import banner from "../assets/Banner.jpg";
 import bannerfront from "../assets/banner-dentist.png";
 import { Helmet } from "react-helmet-async";
+import HomeBottom from "./HomeBottom";
 
 const Home = () => {
   const services = useLoaderData();
@@ -20,6 +21,7 @@ const Home = () => {
           src={bannerfront}
           className="md:w-96 w-80 place-self-end absolute "
           alt=""
+          data-aos="fade-left"
         />
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
           <div className="text-center z-20">
@@ -89,7 +91,7 @@ const Home = () => {
           View All
         </Link>
       </div>
-      <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
+      <section className="p-6 my-6">
 	<div data-aos="fade-right" className="container grid grid-cols-1 gap-6 mx-auto md:mt-36 sm:grid-cols-2 xl:grid-cols-4">
 		<div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 text-gray-100">
 			<div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400">
@@ -147,6 +149,7 @@ const Home = () => {
 		</div>
 	</div>
 </section>
+<HomeBottom/>
       <div
         className="w-full mt-24 dark:bg-gray-500"
         style={{

@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 import dentist from "../assets/dentist2.png";
 import { Helmet } from "react-helmet-async";
 import Spinner from "./Spinner";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
@@ -53,6 +54,7 @@ const SignUp = () => {
           .then((data) => {
             localStorage.setItem("dent-token", data.token);
             navigate(from, { replace: true });
+            toast.success("Registered Succesfully")
           });
       })
       .catch((err) => setError(err.message));
@@ -70,11 +72,27 @@ const SignUp = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+    googleSignIn()
+    .then((result) => {
+      const user = result.user;
+      const currentUser = {
+        email: user.email,
+      };
+      fetch("https://dentisia-server-side.vercel.app/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
       })
-      .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("dent-token", data.token);
+          toast.success("Login Successful");
+          navigate(from, { replace: true });
+        });
+    })
+    .catch((err) => console.log(err.message));
   };
 
   return (
