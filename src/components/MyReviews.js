@@ -1,81 +1,58 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
-import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import { FaRegEdit } from "react-icons/fa";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`https://dentisia-server-side.vercel.app/myreviews?email=${user?.email}`,{
-      headers: {
-        authorization:`Bearer ${localStorage.getItem('dent-token')}`
+    fetch(
+      `https://dentisia-server-side.vercel.app/myreviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("dent-token")}`,
+        },
       }
-    })
+    )
       .then((res) => {
-        if(res.status === 401 || res.status === 403){
+        if (res.status === 401 || res.status === 403) {
           return logOut();
         }
         return res.json();
       })
-      .then(data => setMyReviews(data));
+      .then((data) => setMyReviews(data));
   }, [user, refresh, logOut]);
 
   const handleDeleteReview = (id, name) => {
-    fetch(`https://dentisia-server-side.vercel.app/myreviews/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          toast.success(`Deleted Review from ${name}`);
-          setRefresh(!refresh);
-        }
-      });
+    const confirm = window.confirm("Do You Want to delete this Review");
+    if (confirm) {
+      fetch(`https://dentisia-server-side.vercel.app/myreviews/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast.success(`Deleted Review from ${name}`);
+            setRefresh(!refresh);
+          }
+        });
+    }
   };
-  const handleEditReview = (e, id) => {
-    e.preventDefault();
-    const form = e.target;
-    const message = form.message.value;
-    fetch(`https://dentisia-server-side.vercel.app/editreview/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        message: message,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.matchedCount > 0) {
-          toast.success("Successfully edited your Review");
-          setRefresh(!refresh);
-          form.reset();
-        } else {
-          toast.error("Update Failed");
-        }
-      });
-  };
-
-  const handleHidden = () => {
-    setHidden(!hidden);
-  };
-
-  const handleShow = (id) => {
-    console.log(id)
-  }
 
   return (
     <div>
       <Helmet>
         <title>My Reviews</title>
       </Helmet>
-      <div data-aos="fade-left" className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-800 container mx-auto my-5 rounded-md text-gray-100">
+      <div
+        data-aos="fade-left"
+        className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-800 container mx-auto my-5 rounded-md text-gray-100"
+      >
         <h2 className="text-xl font-semibold">My Reviews</h2>
         {/* My Reviews Section */}
         {myReviews?.length > 0 ? (
@@ -102,23 +79,6 @@ const MyReviews = () => {
                           <p className="text-sm dark:text-gray-400">
                             {review.message}
                           </p>
-                          <form
-                            onSubmit={(e) => handleEditReview(e, review._id)}
-                            className="flex md:flex-row flex-col"
-                          >
-                            <textarea
-                              className="w-full text-black md:rounded-l-md p-4"
-                              placeholder="Edit Review"
-                              name="message"
-                              rows="1"
-                              required
-                            ></textarea>
-                            <input
-                              type="submit"
-                              value={"Submit"}
-                              className="px-2 py-3 md:rounded-r-md bg-blue-500"
-                            />
-                          </form>
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-semibold">
@@ -162,6 +122,14 @@ const MyReviews = () => {
                           </svg>
                           <span>Delete</span>
                         </button>
+                        <div className="flex items-center">
+                          <Link to={`/editreviews/${review._id}`}>
+                          <div className="flex items-center pl-2">
+                          <FaRegEdit></FaRegEdit>
+                          <p className="pl-1">Edit</p>
+                          </div>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>

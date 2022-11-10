@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../components/AddService";
 import Blogs from "../components/Blogs";
+import EditReview from "../components/EditReview";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Login from "../components/Login";
@@ -62,6 +63,11 @@ export const routes = createBrowserRouter([
         path: '/myprofile',
         element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
       },
+      {
+        path: '/editreviews/:id',
+        element: <PrivateRoute><EditReview></EditReview></PrivateRoute>,
+        loader: ({params})=>fetch(`https://dentisia-server-side.vercel.app/editreview/${params.id}`)
+      }
     ],
   },
 ]);
