@@ -45,6 +45,7 @@ const Home = () => {
           <div
             key={service._id}
             className="flex items-center justify-center mx-2"
+            data-aos="fade-up"
           >
             <div className="md:max-w-xs overflow-hidden bg-white rounded-lg shadow-lg my-5 dark:bg-gray-800">
               <div className="px-4 py-2">
@@ -89,7 +90,7 @@ const Home = () => {
         </Link>
       </div>
       <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
-	<div className="container grid grid-cols-1 gap-6 mx-auto md:mt-36 sm:grid-cols-2 xl:grid-cols-4">
+	<div data-aos="fade-right" className="container grid grid-cols-1 gap-6 mx-auto md:mt-36 sm:grid-cols-2 xl:grid-cols-4">
 		<div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 text-gray-100">
 			<div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="h-9 w-9 dark:text-gray-800">

@@ -71,7 +71,7 @@ const MyReviews = () => {
       <Helmet>
         <title>My Reviews</title>
       </Helmet>
-      <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-800 container mx-auto my-5 rounded-md text-gray-100">
+      <div data-aos="fade-left" className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-800 container mx-auto my-5 rounded-md text-gray-100">
         <h2 className="text-xl font-semibold">My Reviews</h2>
         {/* My Reviews Section */}
         {myReviews?.length > 0 ? (

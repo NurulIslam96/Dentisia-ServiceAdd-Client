@@ -4,6 +4,7 @@ import Blogs from "../components/Blogs";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import MyProfile from "../components/MyProfile";
 import MyReviews from "../components/MyReviews";
 import ServiceDetails from "../components/ServiceDetails";
 import Services from "../components/Services";
@@ -56,6 +57,10 @@ export const routes = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs></Blogs>
+      },
+      {
+        path: '/myprofile',
+        element: <MyProfile></MyProfile>
       }
     ],
   },

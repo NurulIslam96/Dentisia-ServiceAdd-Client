@@ -144,7 +144,7 @@ const Header = () => {
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <NavLink to="/profile" className="inline-flex items-center">
+                    <NavLink to="/myprofile" className="inline-flex items-center">
                       <span className="text-md font-bold tracking-wide text-blue-900 uppercase">
                         {user?.displayName}
                       </span>
@@ -170,7 +170,7 @@ const Header = () => {
                   <ul className="space-y-4">
                     <li>
                       <NavLink
-                        to="/profile"
+                        to="/myprofile"
                         aria-label="profile"
                         title="profile"
                         className="font-medium tracking-wide text-blue-900 transition-colors duration-300 hover:text-blue-600"

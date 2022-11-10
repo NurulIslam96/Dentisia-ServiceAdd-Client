@@ -8,7 +8,7 @@ const Blogs = () => {
       <Helmet>
         <title>Blogs</title>
       </Helmet>
-      <div className="text-gray-100 mb-5">
+      <div data-aos="fade-left" className="text-gray-100 mb-5">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-gray-800">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-400">Nov 9, 2022</span>
@@ -60,7 +60,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="text-gray-100 mb-5">
+      <div data-aos="fade-right" className="text-gray-100 mb-5">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-gray-800">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-400">Nov 9, 2022</span>
@@ -112,7 +112,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="text-gray-100 mb-5">
+      <div data-aos="fade-left" className="text-gray-100 mb-5">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-gray-800">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-400">Nov 9, 2022</span>
@@ -164,7 +164,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="text-gray-100 mb-5">
+      <div data-aos="fade-right" className="text-gray-100 mb-5">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-gray-800">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-400">Nov 9, 2022</span>

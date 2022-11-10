@@ -57,7 +57,7 @@ const ServiceDetails = () => {
     <section className="dark:bg-gray-800 dark:text-gray-100">
         {spin && <Spinner></Spinner>}
         <Helmet><title>Service Details</title></Helmet>
-      <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+      <div data-aos="fade-left" className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
             Service Details
@@ -213,7 +213,7 @@ const ServiceDetails = () => {
             }
             {/* Previous Review Section Start */}
             {reviews?.map((review) => (
-              <div key={review._id} review={review}>
+              <div data-aos="fade-up" key={review._id} review={review}>
               <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-800 text-gray-100 mb-5">
                 <div className="flex justify-between p-4">
                   <div className="flex space-x-4">
