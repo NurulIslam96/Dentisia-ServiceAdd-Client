@@ -5,6 +5,7 @@ import banner from "../assets/Banner.jpg";
 import bannerfront from "../assets/banner-dentist.png";
 import { Helmet } from "react-helmet-async";
 import HomeBottom from "./HomeBottom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Home = () => {
   const services = useLoaderData();
@@ -61,12 +62,15 @@ const Home = () => {
                   )}
                 </h1>
               </div>
-              <img
-                className="object-cover bg-white w-full h-48 mt-2"
-                src={service.thumbnail}
-                alt="serviceImage"
-              />
-
+              <PhotoProvider>
+              <PhotoView key={service.thumbnail} src={service.thumbnail}>
+                <img
+                  src={service.thumbnail}
+                  className="w-full md:h-64"
+                  alt=""
+                />
+              </PhotoView>
+            </PhotoProvider>
               <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
                 <h1 className="text-lg font-bold text-white">
                   ${service.price}
