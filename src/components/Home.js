@@ -21,7 +21,6 @@ const Home = () => {
           src={bannerfront}
           className="md:w-96 w-80 place-self-end absolute "
           alt=""
-          data-aos="fade"
         />
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
           <div className="text-center z-20">
