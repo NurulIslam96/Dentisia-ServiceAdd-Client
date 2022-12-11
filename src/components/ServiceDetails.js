@@ -57,7 +57,7 @@ const ServiceDetails = () => {
   };
 
   return (
-    <section className="dark:bg-gray-800 dark:text-gray-100">
+    <section className="">
       <Helmet>
         <title>Service Details</title>
       </Helmet>
@@ -69,20 +69,20 @@ const ServiceDetails = () => {
           className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl"
         >
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
+            <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl">
               Service Details
             </h2>
-            <p className="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-gray-400">
+            <p className="max-w-3xl mx-auto mt-4 text-xl text-center text-gray-700">
               Here is the details of Service you're gonna get!
             </p>
           </div>
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl dark:text-gray-50">
+              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
                 {name}
               </h3>
-              <p className="mt-3 text-lg dark:text-gray-400">{description}</p>
-              <button className="px-8 py-3 font-bold text-2xl border-2 text-slate-700 mt-5 rounded border-blue-500">
+              <p className="mt-3 text-lg text-gray-700">{description}</p>
+              <button className="px-8 py-3 font-bold text-2xl border-2  mt-5 rounded border-blue-500">
                 Price: ${price}
               </button>
             </div>
@@ -91,7 +91,7 @@ const ServiceDetails = () => {
                 <PhotoView key={thumbnail} src={thumbnail}>
                   <img
                     src={thumbnail}
-                    className="mx-auto md:w-60 w-full rounded-lg shadow-lg dark:bg-gray-500"
+                    className="mx-auto md:w-60 w-full rounded-lg shadow-lg bg-gray-500"
                     alt=""
                   />
                 </PhotoView>
@@ -198,7 +198,7 @@ const ServiceDetails = () => {
                           required
                         />
                         <input
-                          className="py-4 my-8 font-semibold rounded-md cursor-pointer dark:text-gray-900 bg-violet-400"
+                          className="py-4 my-8 font-semibold rounded-md cursor-pointer text-gray-900 bg-violet-400"
                           value={"Leave Feedback"}
                           type="submit"
                         />
@@ -223,7 +223,7 @@ const ServiceDetails = () => {
                         className="flex flex-col w-full"
                       >
                         <Link
-                          className="py-4 my-8 font-semibold rounded-md cursor-pointer dark:text-gray-900 text-center bg-violet-400"
+                          className="py-4 my-8 font-semibold rounded-md cursor-pointer text-gray-900 text-center bg-violet-400"
                           to={"/login"}
                         >
                           Please Login
