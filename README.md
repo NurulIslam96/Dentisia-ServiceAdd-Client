@@ -11,11 +11,11 @@ https://dentisia-client-side.web.app/
 
 ## Client Repository Link
 
-https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-NurulIslam96
+https://github.com/NurulIslam96/Dentisia-ServiceAdd-Client
 
 ## Server Repository Link
 
-https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-NurulIslam96
+https://github.com/NurulIslam96/Dentisia-Server-side-repo
 
 ## Features
 
